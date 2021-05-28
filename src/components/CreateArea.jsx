@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import AddIcon from "@material-ui/icons/Add";
 import Fab from "@material-ui/core/Fab";
 import { makeStyles } from "@material-ui/core/styles";
-import Zoom from '@material-ui/core/Zoom';
-
-
+import Zoom from "@material-ui/core/Zoom";
 
 function CreateArea(props) {
   const [note, setNote] = useState({
@@ -43,8 +41,7 @@ function CreateArea(props) {
     },
   }));
 
-  function expand(){
-
+  function expand() {
     setIsExpand(true);
   }
 
@@ -52,33 +49,36 @@ function CreateArea(props) {
   return (
     <div>
       <form className="create-note">
-        {isExpand?<input
-          name="title"
-          onChange={handleChange}
-          value={note.title}
-          placeholder="Title"
-        />:null}
-        <textarea
-          name="content"
-          onClick = {expand}
-          onChange={handleChange}
-          value={note.content}
-          placeholder="Take a note..."
-          rows={isExpand?"3":"1"}
-        />
+       
+          <input
+            name="title"
+            onChange={handleChange}
+            value={note.title}
+            placeholder="Title"
+            onClick={expand}
+          />
+        
+        {isExpand ? (
+          <textarea
+            name="content"
+            
+            onChange={handleChange}
+            value={note.content}
+            placeholder="Take a note..."
+            rows={isExpand ? "3" : "1"}
+          />
+        ) : null}
 
-
-<Zoom in={isExpand}
-        >
-        <Fab
-          size="large"
-          color="white"
-          aria-label="add"
-          onClick={submitNote}
-          className={classes.margin}
-        >
-          <AddIcon />
-        </Fab>
+        <Zoom in={isExpand}>
+          <Fab
+            size="large"
+            color="white"
+            aria-label="add"
+            onClick={submitNote}
+            className={classes.margin}
+          >
+            <AddIcon />
+          </Fab>
         </Zoom>
       </form>
     </div>
