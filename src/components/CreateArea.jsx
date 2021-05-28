@@ -49,25 +49,23 @@ function CreateArea(props) {
   return (
     <div>
       <form className="create-note">
-       
+        {isExpand ? (
           <input
             name="title"
             onChange={handleChange}
             value={note.title}
             placeholder="Title"
-            onClick={expand}
-          />
-        
-        {isExpand ? (
-          <textarea
-            name="content"
-            
-            onChange={handleChange}
-            value={note.content}
-            placeholder="Take a note..."
-            rows={isExpand ? "3" : "1"}
           />
         ) : null}
+
+        <textarea
+          name="content"
+          onClick={expand}
+          onChange={handleChange}
+          value={note.content}
+          placeholder="Take a note..."
+          rows={isExpand ? "3" : "1"}
+        />
 
         <Zoom in={isExpand}>
           <Fab
